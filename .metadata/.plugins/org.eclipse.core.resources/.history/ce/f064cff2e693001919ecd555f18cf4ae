@@ -1,0 +1,15 @@
+package project;
+
+public class boardtest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+int[] num = new int[5];
+	try {
+		
+	}
+
+	
+	}
+
+}

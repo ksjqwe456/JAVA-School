@@ -1,0 +1,106 @@
+package project;
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
+public class test1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		test01 me = new test01();
+		me.display();
+		me.makeMenu();
+
+	}
+
+}
+
+class test01 extends JFrame implements ActionListener {
+	JMenuBar mb;
+	JMenu gmenu;
+	JMenuItem Board, Restart, Level, Help;
+
+	test01() {
+		mb = new JMenuBar();
+		gmenu = new JMenu("메뉴");
+		Board = new JMenuItem("리더보드");
+		Board.addActionListener(this);
+		Restart = new JMenuItem("RESTART");
+		Level = new JMenuItem("난이도");
+		Help = new JMenuItem("도움말");
+		Help.addActionListener(this);
+	}
+
+	void makeMenu()// 메뉴들을 붙여 넣는 작업정의
+	{
+		mb.add(gmenu);
+		// 메뉴바에 메뉴를 추가한다
+		gmenu.add(Board);
+		gmenu.add(Restart);
+		gmenu.add(Level);
+		gmenu.add(Help);
+		setJMenuBar(mb);
+	}
+
+	void display() {
+		setTitle("GAME");
+		setSize(300, 300);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+
+		if (e.getSource() == Help) {
+
+			MyHelp dial = new MyHelp();
+
+
+
+		}
+		if(e.getSource()==Board) {
+			MyBoard record = new MyBoard();
+		}
+	}
+
+	class MyHelp extends JDialog {
+
+		JLabel fig;
+
+		MyHelp() {
+			fig = new JLabel("<html>단축키<br/>w-↑<br/>s-↓ <br/> a-←<br/> d →  </html>");
+			add(fig);
+
+			
+			setLayout(new FlowLayout());
+			setVisible(true);
+			setSize(300, 500);
+			setTitle("단축키");
+
+		}
+	}
+	class MyBoard extends JDialog {
+		JLabel rec;
+		
+		MyBoard(){
+			rec = new JLabel("<html>1위<br/>2위<br/>3위<br/>4위<br/>5위<br/></html>");
+
+			add(rec);
+			setLayout(new FlowLayout());
+			setVisible(true);
+			setSize(300, 500);
+			setTitle("RECORD");
+			
+		}
+	}
+}

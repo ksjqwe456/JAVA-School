@@ -1,0 +1,47 @@
+package TEST01;
+
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class Pra0823 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		pra p1 = new pra();
+		p1.display();
+	}
+
+}
+
+class pra extends JFrame {
+	JButton btn[];
+	JPanel panel;
+
+	pra() {
+		panel = new JPanel(new GridLayout(4,4));
+		btn = new JButton[12];
+		
+		for (int i = 0; i < 10; i++) {
+			btn[i] = new JButton("" + i);
+			panel.add(btn[i]);
+		}
+		btn[10] = new JButton("=");
+		panel.add(btn[10]);
+	
+		
+
+	}
+	
+	void display() {
+		setLayout(new FlowLayout());
+		add(panel);
+		setSize(400, 200);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setTitle("°è»ê±â");
+	}
+}

@@ -1,0 +1,100 @@
+package project;
+
+import java.sql.Date;
+import java.util.Scanner;
+
+public class asdafa {
+
+	public void start() { 
+
+	    int randomNumber = (int) (Math.random() * 1000); 
+	    int number = -1, index, count; 
+	    String decision, guess, playername; 
+	    long currentTime = 0, newTime, totalTime; 
+	    boolean quitting = false; 
+	    count = 0; 
+	    System.out.println("Welcome to the Guessing Game"); 
+	    System.out.println("Type \"quit\" to quit at anytime."); 
+	    Scanner scan = new Scanner(System.in); 
+	    System.out.println("Try to guess the number. Range is from 1 - 1000: "); 
+	    guess = scan.nextLine(); 
+	    if ("quit".equals(guess)) { 
+	     System.out.println("Quitting..."); 
+	     quitting = true; 
+	    } else { 
+	     number = Integer.parseInt(guess); 
+	    } 
+
+	    while (number != randomNumber && number > -1){ 
+	     if (number >= 1001 || number <= 1) { 
+	      System.out.println("Number is not between 1 - 1000. Enter another number"); 
+	     } 
+
+	     if (number != randomNumber && number > randomNumber && number <= 1000 && number >= 1) { 
+	      System.out.println("Number is too high. Try again!"); 
+	     } 
+
+	     if (number != randomNumber && number < randomNumber && number < 1000 && number > 1) { 
+	      System.out.println("Number is too low. Try again!"); 
+	     } 
+
+	     if (number != randomNumber) { 
+	      count = count + 1; 
+	     } 
+
+	     if (number != randomNumber) { 
+	      Scanner scannew = new Scanner(System.in); 
+	      System.out.println("Enter a different number: "); 
+	      guess = scannew.nextLine(); 
+	      if ("quit".equals(guess)) { 
+	       System.out.println("Quitting..."); 
+	       quitting = true; 
+	      } else { 
+	       number = Integer.parseInt(guess); 
+	      } 
+	     } 
+
+	     if (count == 1) { 
+	      long lDateTime = new Date().getTime(); 
+	      currentTime = lDateTime/1000; 
+	     } 
+
+	     if (quitting) { 
+	      break; 
+	     } 
+	    } 
+
+	    if (!quitting) { 
+	     long DateTime = new Date().getTime(); 
+	     newTime = DateTime/1000; 
+	     totalTime = newTime - currentTime; 
+
+	     System.out.println("You win! Your total amount of guesses was: " + count + " Total time (seconds): " + (totalTime)); 
+
+	     Scanner name = new Scanner(System.in); 
+	     System.out.println("Enter your name: "); 
+	     playername = scan.nextLine(); 
+
+
+	     //ArrayList<Integer> score = new ArrayList<Integer>(); 
+	     //score.add(index, count); 
+	     //System.out.println(score); 
+	     //index++; 
+
+	     Scanner decision1 = new Scanner(System.in); 
+	     System.out.println("Do you want to play again? y/n"); 
+	     decision = decision1.nextLine(); 
+
+	     if ("y".equals(decision)) { 
+	      Game one = new Game(); 
+	      one.start(); 
+	     } 
+
+	     if ("n".equals(decision)) { 
+	      System.out.println("Quitting..."); 
+	     } 
+	    } 
+	    scan.close(); 
+	} 
+	} 
+

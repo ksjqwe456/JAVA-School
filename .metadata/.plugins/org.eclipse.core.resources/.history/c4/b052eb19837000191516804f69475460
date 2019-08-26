@@ -1,0 +1,300 @@
+package midtest1602100346;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class Game2 {
+
+	public static void main(String[] args) {
+		MyPuzzle1 mp1 = new MyPuzzle1();
+		mp1.display();
+		// TODO Auto-generated method stub
+
+	}
+
+}
+
+class MyPuzzle1 extends JFrame implements ActionListener {
+	JButton btn[];
+	JPanel panel;
+	JButton reset;
+	Font myFont;
+	Color mycolor;
+	ImageIcon img[] = new ImageIcon[12];
+
+	MyPuzzle1() {
+		for(int i=0;i<11;i++) {
+		img[i] = new ImageIcon("img"+i+".png.jpg");
+		}
+		myFont = new Font("굴림체", Font.BOLD, 30);
+		panel = new JPanel(new GridLayout(4, 4));
+		btn = new JButton[12];
+		mycolor = new Color(100, 255, 0);
+
+		for (int i = 0; i < 12; i++) {
+
+			btn[i] = new JButton("" + i);
+			btn[i].setFont(myFont);
+			btn[i].setBackground(mycolor);
+			btn[i].setForeground(Color.blue);
+		
+			btn[i].addActionListener(this);
+			btn[i].setIcon(img[i]);
+			panel.add(btn[i]);
+		
+
+		}
+
+		btn[8].setText("");
+		reset = new JButton("Reset");
+		reset.setFont(myFont);
+		reset.setBackground(mycolor);
+		reset.setForeground(Color.blue);
+		reset.addActionListener(this);
+
+	}
+
+	void display() {
+		setLayout(new BorderLayout(5, 5));
+		add(panel, BorderLayout.CENTER);
+		add(reset, BorderLayout.SOUTH);
+		setTitle("쉬어가기");
+
+		setSize(400, 400);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (btn[8].getIcon()==null) {
+
+			if (e.getSource() == btn[5]) {
+				btn[8].setIcon(btn[5].getIcon());// 8
+				btn[5].setIcon(null);
+
+			}
+			if (e.getSource() == btn[7]) {
+				btn[8].setIcon(btn[7].getIcon());
+				btn[7].setIcon(null);
+			}
+			if (e.getSource() == btn[11]) {
+				btn[8].setIcon(btn[11].getIcon());
+				btn[11].setIcon(null);
+			}
+			
+		}
+		if (btn[5].getIcon().equals("")) {
+			if (e.getSource() == btn[4]) {
+				btn[5].setIcon(btn[4].getIcon());// 5
+				btn[4].setIcon(null);
+
+			}
+			if (e.getSource() == btn[2]) {
+				btn[5].setIcon(btn[2].getIcon());//
+				btn[2].setIcon(null);
+			}
+			if (e.getSource() == btn[8]) {
+				btn[5].setIcon(btn[8].getIcon());
+				btn[8].setIcon(null);
+			}
+		}
+		if (btn[7].getIcon().equals(null)) {
+			if (e.getSource() == btn[4]) {
+				btn[7].setIcon(btn[4].getIcon());// 7
+				btn[4].setIcon(null);
+			}
+			if (e.getSource() == btn[6]) {
+				btn[7].setIcon(btn[6].getIcon());
+				btn[6].setIcon(null);
+			}
+			if (e.getSource() == btn[8]) {
+				btn[7].setIcon(btn[8].getIcon());
+				btn[8].setIcon(null);
+			}
+			if (e.getSource() == btn[10]) {
+				btn[7].setIcon(btn[10].getIcon());
+				btn[10].setIcon(null);
+			}
+		}
+
+		if (btn[6].getIcon().equals(null)) {
+			if (e.getSource() == btn[3]) {
+				btn[6].setIcon(btn[3].getIcon());// 6
+				btn[3].setIcon(null);
+			}
+			if (e.getSource() == btn[7]) {
+				btn[6].setIcon(btn[7].getIcon());
+				btn[7].setIcon(null);
+			}
+			if (e.getSource() == btn[9]) {
+				btn[6].setIcon(btn[9].getIcon());
+				btn[9].setIcon(null);
+			}
+			
+		}
+		if (btn[3].getIcon().equals(null)) {
+			if (e.getSource() == btn[6]) {
+				btn[3].setIcon(btn[6].getIcon());// 3
+				btn[6].setIcon(null);
+			}
+			if (e.getSource() == btn[4]) {
+				btn[3].setIcon(btn[4].getIcon());
+				btn[4].setIcon(null);
+			}
+			if (e.getSource() == btn[0]) {
+				btn[3].setIcon(btn[0].getIcon());
+				btn[0].setIcon(null);
+			}
+		}
+		if (btn[0].getIcon().equals(null)) {
+			if (e.getSource() == btn[3]) {
+				btn[0].setIcon(btn[3].getIcon());// 0
+				btn[3].setIcon(null);
+			}
+			if (e.getSource() == btn[1]) {
+				btn[0].setIcon(btn[1].getIcon());
+				btn[1].setIcon(null);
+			}
+		}
+		if (btn[1].getIcon().equals(null)) {
+			if (e.getSource() == btn[0]) {
+				btn[1].setIcon(btn[0].getIcon());// 1
+				btn[0].setIcon(null);
+			}
+			if (e.getSource() == btn[4]) {
+				btn[1].setIcon(btn[4].getIcon());
+				btn[4].setIcon(null);
+			}
+			if (e.getSource() == btn[2]) {
+				btn[1].setIcon(btn[2].getIcon());
+				btn[2].setIcon(null);
+			}
+		}
+		if (btn[4].getIcon().equals(null)) {
+			if (e.getSource() == btn[1]) {
+				btn[4].setIcon(btn[1].getIcon());// 4
+				btn[1].setIcon(null);
+			}
+			if (e.getSource() == btn[3]) {
+				btn[4].setIcon(btn[3].getIcon());
+				btn[3].setIcon(null);
+			}
+			if (e.getSource() == btn[5]) {
+				btn[4].setIcon(btn[5].getIcon());
+				btn[5].setIcon(null);
+			}
+			if (e.getSource() == btn[7]) {
+				btn[4].setIcon(btn[7].getIcon());
+				btn[7].setIcon(null);
+			}
+		}
+		if (btn[2].getIcon().equals(null)) {
+			if (e.getSource() == btn[1]) {
+				btn[2].setIcon(btn[1].getIcon());// 2
+				btn[1].setIcon(null);
+			}
+			if (e.getSource() == btn[5]) {
+				btn[2].setIcon(btn[5].getIcon());
+				btn[5].setIcon(null);
+			}
+
+		}
+		if (btn[9].getIcon().equals(null)) {
+			if (e.getSource() == btn[6]) {
+				btn[9].setIcon(btn[6].getIcon());// 9
+				btn[9].setIcon(null);
+			}
+			if (e.getSource() == btn[10]) {
+				btn[9].setIcon(btn[10].getIcon());
+				btn[10].setIcon(null);
+			}
+			if (e.getSource() == btn[6]) {
+				btn[9].setIcon(btn[6].getIcon());
+				btn[6].setIcon(null);
+			}
+
+		}
+		if (btn[10].getIcon().equals(null)) {
+			if (e.getSource() == btn[6]) {
+				btn[10].setIcon(btn[11].getIcon());// 10
+				btn[10].setIcon(null);
+			}
+			if (e.getSource() == btn[7]) {
+				btn[10].setIcon(btn[7].getIcon());
+				btn[7].setIcon(null);
+			}
+			if (e.getSource() == btn[11]) {
+				btn[10].setIcon(btn[11].getIcon());
+				btn[11].setIcon(null);
+			}
+			if (e.getSource() == btn[9]) {
+				btn[10].setIcon(btn[9].getIcon());
+				btn[9].setIcon(null);
+			}
+
+		}
+		if (btn[11].getIcon().equals(null)) {
+			if (e.getSource() == btn[10]) {
+				btn[11].setIcon(btn[10].getIcon());// 11
+				btn[11].setIcon(null);
+			}
+			if (e.getSource() == btn[10]) {
+				btn[11].setIcon(btn[10].getIcon());
+				btn[10].setIcon(null);
+			}
+			if (e.getSource() == btn[8]) {
+				btn[11].setIcon(btn[8].getIcon());
+				btn[8].setIcon(null);
+			}
+		
+		
+		
+		
+		}	
+		
+		
+		
+		
+		if (e.getSource() == reset) {
+			int u[] = MyPuzzle1.makeRnum();
+			for (int i = 0; i < 12; i++) {
+				btn[i].setText("" + u[i]);
+			}
+			btn[8].setIcon(null);
+
+		}
+	}
+
+	static int[] makeRnum() {
+		Random r = new Random();
+		int result[] = new int[12];
+		int x = 0;
+		for (int i = 0; i < 12; i++) {
+			result[i] = r.nextInt(12) + 1;
+			for (int k = 0; k < i; k++) {
+				{
+					if (result[i] == result[k]) {
+						x = r.nextInt(12) + 1;
+						result[i] = x;
+						i--;
+						break;
+
+					}
+				}
+			}
+		}
+		return result;
+
+	}
+}
